@@ -14,8 +14,8 @@ const TodosList: React.FC<TodosListProps> = ({ reload, restart }) => {
   const [todosList, setTodosList] = useState<Todo[]>([]);
 
   const fetchAllTodos = async () => {
-    const todo = await getTodos();
-    setTodosList(todo);
+    const todos = await getTodos();
+    setTodosList(todos);
   };
 
   useEffect(() => {

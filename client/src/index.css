@@ -91,3 +91,10 @@ form {
 .todo-done {
   margin-left: 10px;
 }
+
+.no-todos {
+  margin: 3em 0;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}

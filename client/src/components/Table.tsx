@@ -45,48 +45,53 @@ const TableContainer: React.FC<TableContainerProps> = ({ todos, restart }) => {
           </Table.Tr>
         </Table.Thead>
         <Table.Tbody>
-          {todos.map((todo) => (
-            <Table.Tr key={todo.id} className="todo-container">
-              <Table.Td
-                className="todo-item"
-                onClick={() => handleProgress(todo)}
-              >
-                <div className="todo-text">
-                  <p
-                    style={{
-                      textDecoration: todo.done ? "line-through" : "none",
-                    }}
-                  >
-                    {todo.title}
-                  </p>
-
-                  <p>{todo.done && <p className="todo-done">✅</p>}</p>
-                </div>
-              </Table.Td>
-
-              <Table.Td onClick={() => handleDelete(todo)}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="icon icon-tabler icon-tabler-trash delete-icon"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  strokeWidth="2"
-                  stroke="currentColor"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+          {(todos.length > 0 &&
+            todos.map((todo) => (
+              <Table.Tr key={todo.id} className="todo-container">
+                <Table.Td
+                  className="todo-item"
+                  onClick={() => handleProgress(todo)}
                 >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                  <path d="M4 7l16 0"></path>
-                  <path d="M10 11l0 6"></path>
-                  <path d="M14 11l0 6"></path>
-                  <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
-                  <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
-                </svg>
-              </Table.Td>
-            </Table.Tr>
-          ))}
+                  <div className="todo-text">
+                    <p
+                      style={{
+                        textDecoration: todo.done ? "line-through" : "none",
+                      }}
+                    >
+                      {todo.title}
+                    </p>
+
+                    <p>{todo.done && <p className="todo-done">✅</p>}</p>
+                  </div>
+                </Table.Td>
+
+                <Table.Td onClick={() => handleDelete(todo)}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="icon icon-tabler icon-tabler-trash delete-icon"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    strokeWidth="2"
+                    stroke="currentColor"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M4 7l16 0"></path>
+                    <path d="M10 11l0 6"></path>
+                    <path d="M14 11l0 6"></path>
+                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+                  </svg>
+                </Table.Td>
+              </Table.Tr>
+            ))) || (
+            <div className="no-todos">
+              No todos found. Please add some new ones!{" "}
+            </div>
+          )}
         </Table.Tbody>
       </Table>
     </Container>
