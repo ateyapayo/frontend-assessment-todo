@@ -28,10 +28,12 @@ const Shell = () => {
           justifyContent: "center",
         }}
       >
-        <div className="input">
-          <InputContainer reload={setTrigger} />
+        <div className="main-container">
+          <div className="input">
+            <InputContainer reload={setTrigger} />
+          </div>
+          <TodosList restart={setTrigger} reload={trigger} />
         </div>
-        <TodosList restart={setTrigger} reload={trigger} />
       </AppShell.Main>
     </AppShell>
   );
