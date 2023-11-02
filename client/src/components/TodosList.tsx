@@ -25,7 +25,7 @@ const TodosList: React.FC<TodosListProps> = ({ reload, restart }) => {
 
   return (
     <>
-      <TableContainer todos={todosList} />
+      <TableContainer todos={todosList} restart={restart} />
     </>
   );
 };

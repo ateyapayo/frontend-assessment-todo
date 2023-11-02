@@ -18,3 +18,14 @@ export const addNewTodo = async (todo: NewTodo[]): Promise<Todo> => {
   const addedTodo = await res.json();
   return addedTodo;
 };
+
+export const removeTodo = async (todoId: any) => {
+  const res = await fetch(`http://localhost:8080/todos/${todoId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  return res;
+};
