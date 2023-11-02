@@ -61,7 +61,7 @@ const TableContainer: React.FC<TableContainerProps> = ({ todos, restart }) => {
                       {todo.title}
                     </p>
 
-                    <p>{todo.done && <p className="todo-done">✅</p>}</p>
+                    <p>{todo.done && <span className="todo-done">✅</span>}</p>
                   </div>
                 </Table.Td>
 
@@ -88,9 +88,9 @@ const TableContainer: React.FC<TableContainerProps> = ({ todos, restart }) => {
                 </Table.Td>
               </Table.Tr>
             ))) || (
-            <div className="no-todos">
-              No todos found. Please add some new ones!{" "}
-            </div>
+            <tr className="no-todos">
+              <td>No todos found. Please add some new ones!</td>
+            </tr>
           )}
         </Table.Tbody>
       </Table>
