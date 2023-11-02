@@ -29,3 +29,16 @@ export const removeTodo = async (todoId: any) => {
 
   return res;
 };
+
+export const updateTodo = async (todo: any) => {
+  const res = await fetch(`http://localhost:8080/todos/${todo.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(todo),
+  });
+
+  const updatedTodo = await res.json();
+  return updatedTodo;
+};

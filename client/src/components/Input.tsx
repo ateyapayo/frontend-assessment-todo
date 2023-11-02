@@ -38,7 +38,11 @@ const InputContainer: React.FC<InputProps> = ({ reload }) => {
         value={newTodo}
         placeholder="Add a new task"
       />
-      <button className="plus-button" type="submit" />
+      <button
+        disabled={!newTodo.trim()}
+        className="plus-button"
+        type="submit"
+      />
     </form>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import { Table, Container } from "@mantine/core";
-import { removeTodo } from "../api/todos";
+import { removeTodo, updateTodo } from "../api/todos";
 import { Todo } from "../Interfaces";
 
 type TableContainerProps = {
@@ -24,6 +24,18 @@ const TableContainer: React.FC<TableContainerProps> = ({ todos, restart }) => {
     }
   };
 
+  const handleProgress = async (todo: Todo) => {
+    try {
+      await updateTodo({
+        ...todo,
+        done: !todo.done,
+      });
+      restart(true);
+    } catch (error) {
+      console.error("Error updating todo:", error);
+    }
+  };
+
   return (
     <Container>
       <Table highlightOnHover striped style={tableStyles}>
@@ -36,12 +48,22 @@ const TableContainer: React.FC<TableContainerProps> = ({ todos, restart }) => {
           {todos.map((todo) => (
             <Table.Tr key={todo.id} className="todo-container">
               <Table.Td
-                style={{
-                  textDecoration: todo.done ? "line-through" : "none",
-                }}
+                className="todo-item"
+                onClick={() => handleProgress(todo)}
               >
-                {todo.title}
+                <div className="todo-text">
+                  <p
+                    style={{
+                      textDecoration: todo.done ? "line-through" : "none",
+                    }}
+                  >
+                    {todo.title}
+                  </p>
+
+                  <p>{todo.done && <p className="todo-done">✅</p>}</p>
+                </div>
               </Table.Td>
+
               <Table.Td onClick={() => handleDelete(todo)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

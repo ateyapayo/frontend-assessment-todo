@@ -51,10 +51,18 @@ form {
   cursor: pointer;
 }
 
+.plus-button:disabled {
+  color: black;
+}
+
 .todo-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.todo-item {
+  cursor: pointer;
 }
 
 .main-container {
@@ -63,9 +71,23 @@ form {
   padding: 5em 0;
 }
 
+.todo-text {
+  display: flex;
+}
+
+.todo-text {
+  display: flex;
+  align-items: center;
+  height: 30px;
+}
+
 .delete-icon {
   display: flex;
   width: 22px;
   height: 22px;
   cursor: pointer;
+}
+
+.todo-done {
+  margin-left: 10px;
 }
