@@ -1,4 +1,4 @@
-export default interface Task {
+export default interface Todo {
   id: number;
   title: string;
   done: false | true;

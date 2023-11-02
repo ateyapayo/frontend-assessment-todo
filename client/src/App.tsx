@@ -1,12 +1,13 @@
 import "@mantine/core/styles.css";
 
 import { MantineProvider } from "@mantine/core";
-import TasksList from "./components/TasksList";
+
+import Shell from "./components/Shell";
 
 const App = () => {
   return (
     <MantineProvider>
-      <TasksList />
+      <Shell />
     </MantineProvider>
   );
 };
