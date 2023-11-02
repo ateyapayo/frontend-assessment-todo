@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
 
 import { getTodos } from "../api/todos.ts";
-import Todo from "../Interfaces.ts";
+import { Todo } from "../Interfaces.ts";
 
 import TableContainer from "./Table.tsx";
 
-const TodosList: React.FC = () => {
+type TodosListProps = {
+  reload: boolean;
+  restart: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const TodosList: React.FC<TodosListProps> = ({ reload, restart }) => {
   const [todosList, setTodosList] = useState<Todo[]>([]);
 
   const fetchAllTodos = async () => {
@@ -15,7 +20,8 @@ const TodosList: React.FC = () => {
 
   useEffect(() => {
     fetchAllTodos();
-  }, []);
+    restart(false);
+  }, [reload]);
 
   return (
     <>

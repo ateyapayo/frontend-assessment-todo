@@ -1,9 +1,14 @@
 import { useHeadroom } from "@mantine/hooks";
 import { AppShell, Group } from "@mantine/core";
 
+import { useState } from "react";
+
 import TodosList from "./TodosList";
+import InputContainer from "./Input";
 
 const Shell = () => {
+  const [trigger, setTrigger] = useState<boolean>(false);
+
   const pinned = useHeadroom({ fixedAt: 120 });
 
   return (
@@ -23,7 +28,10 @@ const Shell = () => {
           justifyContent: "center",
         }}
       >
-        <TodosList />
+        <div className="input">
+          <InputContainer reload={setTrigger} />
+        </div>
+        <TodosList restart={setTrigger} reload={trigger} />
       </AppShell.Main>
     </AppShell>
   );
